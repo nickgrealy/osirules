@@ -1,0 +1,23 @@
+apply plugin: 'application'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+mainClassName = "main.GroovyTest"
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+compileGroovy {
+    options.compilerArgs << '-parameters'
+    groovyOptions.configurationScript = file('gradle/Compile.groovy')
+    groovyClasspath = fileTree(dir: 'C:/devtools/groovy-2.5.0-SNAPSHOT/lib', include: ['*.jar'])
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.4.3'
+}
