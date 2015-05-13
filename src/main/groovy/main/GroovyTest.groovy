@@ -5,8 +5,9 @@ package main
 class GroovyTest {
 
     public static void main(String[] args) {
-        println "\n\nmain.GroovyTest " + GroovyTest.declaredMethods.find{it.name=='run'}.parameters.collect{it.name}
-        println "main.JavaTest   " + JavaTest.declaredMethods.find{it.name=='run'}.parameters.collect{it.name}
+        println "\n\n"
+        println GroovyTest.name + "(" + GroovyTest.declaredMethods.find{it.name=='run'}.parameters.collect{"$it.type.simpleName $it.name"}.join(", ") + ")"
+        println JavaTest.name + "(" + JavaTest.declaredMethods.find{it.name=='run'}.parameters.collect{"$it.type.simpleName $it.name"}.join(", ") + ")"
         println "\n\n"
     }
 

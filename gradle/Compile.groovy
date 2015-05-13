@@ -1,3 +1,3 @@
 withConfig(configuration) {
-    configuration.setParameters(true)
+    configuration.parameters = true
 }
