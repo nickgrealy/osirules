@@ -4,6 +4,8 @@ apply plugin: 'idea'
 
 mainClassName = "main.GroovyTest"
 
+defaultTasks 'clean', 'run'
+
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
@@ -13,8 +15,11 @@ repositories {
 }
 
 compileGroovy {
+    // adds Java parameters...
     options.compilerArgs << '-parameters'
+    // adds Groovy parameters...
     groovyOptions.configurationScript = file('gradle/Compile.groovy')
+    // use latest overnight snapshot (built from https://github.com/apache/incubator-groovy)
     groovyClasspath = fileTree(dir: 'C:/devtools/groovy-2.5.0-SNAPSHOT/lib', include: ['*.jar'])
 }
 
